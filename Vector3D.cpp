@@ -11,3 +11,21 @@ Vector3D::~Vector3D() {}
 float Vector3D::getX() { return x; }
 float Vector3D::getY() { return y; }
 float Vector3D::getZ() { return z; }
+
+//Vector operations
+Vector3D Vector3D::operator+(const Vector3D& v) {
+    return Vector3D(x + v.x, y + v.y, z + v.z);
+}
+
+Vector3D Vector3D::operator-(const Vector3D& v) {
+    return Vector3D(x - v.x, y - v.y, z - v.z);
+}
+
+
+
+
+
+
+
+
+

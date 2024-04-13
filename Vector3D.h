@@ -5,7 +5,7 @@
 
 class Vector3D {
 public:
-    float x, y, z;  // Public members (ideally should be private with getter and setter methods)
+    float x, y, z;  
 
     // Constructors
     Vector3D(float x, float y, float z);
@@ -17,6 +17,13 @@ public:
     float getX();
     float getY();
     float getZ();
+
+    //vector operations
+    Vector3D operator+(const Vector3D& v);
+    Vector3D operator-(const Vector3D& v);
+
+
+
 };
 
 #endif // VECTOR3D_H
