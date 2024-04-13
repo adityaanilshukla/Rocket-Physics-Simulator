@@ -1,11 +1,11 @@
-# Compiler settings - Can change according to your needs
+# Compiler settings - Change as needed
 CXX=g++
 CXXFLAGS=-Wall -g -I../
 LDFLAGS=-lgtest -lgtest_main -pthread
 
 # Files and folders
 EXECUTABLE=unit_test
-SOURCES=unit_test.cpp ../Vector3D.cpp
+SOURCES=unit_test.cpp ../Vector3D.cpp ../Physicalobject.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 
 # Main target

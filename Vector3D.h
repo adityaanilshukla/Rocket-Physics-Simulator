@@ -5,7 +5,9 @@
 
 class Vector3D {
 public:
-    float x, y, z;  
+
+    // Variables
+    float x, y, z;
 
     // Constructors
     Vector3D(float x, float y, float z);

@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 #include "../Vector3D.h" 
+#include "../Physicalobject.h"
+
 
 TEST(Vector3D, constructor)
 {
@@ -38,6 +40,17 @@ TEST(Vector3D, scalarMultiplication)
 	EXPECT_EQ(4, v2.getY());
 	EXPECT_EQ(6, v2.getZ());
 }
+
+TEST(Physicalobject, constructor)
+{
+	Vector3D position(1, 2, 3);
+	Vector3D velocity(4, 5, 6);
+	Vector3D acceleration(4, 5, 6);
+	float mass = 7;
+	Physicalobject p(position ,velocity ,acceleration, mass);
+	EXPECT_EQ(mass, p.getMass());
+}
+
 
 int main(int argc, char*argv[])
 {
