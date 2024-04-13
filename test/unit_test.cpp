@@ -30,6 +30,14 @@ TEST( Vector3D, subtraction)
 	EXPECT_EQ(-3, v3.getZ());
 }
 
+TEST(Vector3D, scalarMultiplication)
+{
+	Vector3D v1(1, 2, 3);
+	Vector3D v2 = v1 * 2;
+	EXPECT_EQ(2, v2.getX());
+	EXPECT_EQ(4, v2.getY());
+	EXPECT_EQ(6, v2.getZ());
+}
 
 int main(int argc, char*argv[])
 {

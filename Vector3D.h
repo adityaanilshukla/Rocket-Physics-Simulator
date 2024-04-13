@@ -22,6 +22,9 @@ public:
     Vector3D operator+(const Vector3D& v);
     Vector3D operator-(const Vector3D& v);
 
+    //scalar operations
+    Vector3D operator*(float scalar);
+
 
 
 };

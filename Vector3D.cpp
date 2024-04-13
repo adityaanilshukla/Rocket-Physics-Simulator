@@ -21,7 +21,10 @@ Vector3D Vector3D::operator-(const Vector3D& v) {
     return Vector3D(x - v.x, y - v.y, z - v.z);
 }
 
-
+//Scalar operations
+Vector3D Vector3D::operator*(float scalar) {
+    return Vector3D(x * scalar, y * scalar, z * scalar);
+}
 
 
 
