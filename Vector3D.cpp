@@ -31,4 +31,3 @@ Vector3D Vector3D::operator*(float scalar) {
 
 
 
-

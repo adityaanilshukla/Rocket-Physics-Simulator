@@ -21,8 +21,11 @@ Vector3D Physicalobject::getVelocity(){
 Vector3D Physicalobject::getAcceleration(){
 	return acceleration_;
 }
-
-
+// we multipy 0.5f after to prevent commutative property of multiplication of C++
+void Physicalobject::updatePosition(float& deltaTime){
+	position_ = position_ + velocity_ * deltaTime + acceleration_ * (0.5f * deltaTime * deltaTime);
+	velocity_ = velocity_ + acceleration_ * deltaTime;
+}
 
 
 

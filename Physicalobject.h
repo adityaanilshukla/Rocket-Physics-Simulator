@@ -29,6 +29,11 @@ class Physicalobject {
 		Vector3D getVelocity();
 		Vector3D getAcceleration();
 
+		//virtual methods for updating state
+		void updatePosition(float& deltaTime);
+
+
+
 };
 
 #endif //PHYSICALOBJECT_H

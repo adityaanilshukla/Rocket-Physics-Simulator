@@ -35,7 +35,7 @@ TEST( Vector3D, subtraction)
 TEST(Vector3D, scalarMultiplication)
 {
 	Vector3D v1(1, 2, 3);
-	Vector3D v2 = v1 * 2;
+	Vector3D v2 = v1 * 2.0f;
 	EXPECT_EQ(2, v2.getX());
 	EXPECT_EQ(4, v2.getY());
 	EXPECT_EQ(6, v2.getZ());
@@ -53,6 +53,27 @@ TEST(Physicalobject, constructor)
 	EXPECT_EQ(velocity.getY(), p.getVelocity().getY());
 	EXPECT_EQ(acceleration.getZ(), p.getAcceleration().getZ());
 }
+
+TEST(Physicalobject, updatePosition)
+{
+	Vector3D position(1, 2, 3);
+	Vector3D velocity(4, 5, 6);
+	Vector3D acceleration(4, 5, 6);
+	float mass = 7;
+	float deltaTime = 4;
+
+	// we multipy 0.5f after to prevent commutative property of multiplication of C++
+	Vector3D displacement = velocity * deltaTime + acceleration * 0.5f * deltaTime * deltaTime;	
+	Physicalobject p(position ,velocity ,acceleration, mass);
+	p.updatePosition(deltaTime);
+	Vector3D expectedPosition = position + displacement;
+
+	EXPECT_EQ(expectedPosition.getX(), p.getPosition().getX());
+	EXPECT_EQ(expectedPosition.getY(), p.getPosition().getY());
+	EXPECT_EQ(expectedPosition.getZ(), p.getPosition().getZ());
+}
+
+
 
 
 int main(int argc, char*argv[])

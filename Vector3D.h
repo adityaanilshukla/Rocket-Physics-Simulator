@@ -11,7 +11,6 @@ public:
 
     // Constructors
     Vector3D(float x, float y, float z);
-
     // Destructor
     ~Vector3D(); 
     
