@@ -9,3 +9,29 @@ Physicalobject::~Physicalobject() {}
 float Physicalobject::getMass() {
     return mass_;
 }
+
+Vector3D Physicalobject::getPosition() {
+	return position_;
+}
+
+Vector3D Physicalobject::getVelocity(){
+	return velocity_;
+}
+
+Vector3D Physicalobject::getAcceleration(){
+	return acceleration_;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,6 +25,9 @@ class Physicalobject {
 
 		//getters
 		float getMass();
+		Vector3D getPosition();
+		Vector3D getVelocity();
+		Vector3D getAcceleration();
 
 };
 

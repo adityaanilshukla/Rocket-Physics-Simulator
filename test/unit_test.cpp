@@ -49,6 +49,9 @@ TEST(Physicalobject, constructor)
 	float mass = 7;
 	Physicalobject p(position ,velocity ,acceleration, mass);
 	EXPECT_EQ(mass, p.getMass());
+	EXPECT_EQ(position.getX(), p.getPosition().getX());
+	EXPECT_EQ(velocity.getY(), p.getVelocity().getY());
+	EXPECT_EQ(acceleration.getZ(), p.getAcceleration().getZ());
 }
 
 
