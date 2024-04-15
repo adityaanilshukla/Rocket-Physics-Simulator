@@ -87,7 +87,7 @@ TEST(Rocket, constructor)
 	float crossSectionalArea = 15.0f;
 
 	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, thrust, dragCoefficient, crossSectionalArea, fuelMass);
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea);
 
 }
 
