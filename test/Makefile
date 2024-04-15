@@ -5,7 +5,8 @@ LDFLAGS=-lgtest -lgtest_main -pthread
 
 # Files and folders
 EXECUTABLE=unit_test
-SOURCES=unit_test.cpp ../Vector3D.cpp ../Physicalobject.cpp
+# SOURCES=unit_test.cpp ../Vector3D.cpp ../Physicalobject.cpp
+SOURCES=unit_test.cpp ../Vector3D.cpp ../Physicalobject.cpp ../Rocket.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 
 # Main target

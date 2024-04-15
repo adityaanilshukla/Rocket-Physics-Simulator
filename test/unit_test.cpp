@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "../Vector3D.h" 
 #include "../Physicalobject.h"
+#include "../Rocket.h"
 
 
 TEST(Vector3D, constructor)
@@ -73,6 +74,22 @@ TEST(Physicalobject, updatePosition)
 	EXPECT_EQ(expectedPosition.getZ(), p.getPosition().getZ());
 }
 
+TEST(Rocket, constructor)
+{
+	//v2 rocket specifications real values
+	Vector3D position(0, 0, 0);
+	Vector3D velocity(0, 0, 0);
+	Vector3D acceleration(0, 0, 0);
+	float dryMass = 5000;
+	float fuelMass = (1200-dryMass);
+	float thrust = (25000*9.81f);
+	float dragCoefficient = 0.15f;
+	float crossSectionalArea = 15.0f;
+
+	//constructor
+	Rocket r (position, velocity, acceleration, dryMass, thrust, dragCoefficient, crossSectionalArea, fuelMass);
+
+}
 
 
 
