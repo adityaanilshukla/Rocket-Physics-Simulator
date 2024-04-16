@@ -18,6 +18,7 @@ class Rocket : public Physicalobject
 		float dryMass;
 		float specificImpulse;
 
+
 		//constructor
 		Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, float &dryMass, float &fuelMass ,float &thrust, float &dragCoefficient, float &crossSectionalArea, float &specificImpulse);
 		//destructor
@@ -25,6 +26,7 @@ class Rocket : public Physicalobject
 
 		//methods
 		void updateMass(float &deltaTime);
+		bool fuelNotDepleted(); 
 };
 
 #endif // ROCKET_H
