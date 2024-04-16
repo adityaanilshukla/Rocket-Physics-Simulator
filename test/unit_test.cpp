@@ -89,9 +89,31 @@ TEST(Rocket, constructor)
 
 	//constructor
 	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpuse);
-
 }
 
+TEST(Rocket, updateMass)
+{
+	//v2 rocket specifications real values
+	Vector3D position(0, 0, 0);
+	Vector3D velocity(0, 0, 0);
+	Vector3D acceleration(0, 0, 0);
+	float dryMass = 5000;
+	float fuelMass = (1200-dryMass);
+	float thrust = (25000*9.81f);
+	float dragCoefficient = 0.15f;
+	float crossSectionalArea = 15.0f;
+	float specificImpuse = 250;
+	float deltaTime = 0.7; //seconds
+
+	//constructor
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpuse);
+
+	//rocket fuel flow rate is thrust/specificImpulse. After updateMass is called the fuel mass should be reduced
+	float fuelFlowRate = thrust/specificImpuse;
+	float fuelUsedThisTimeStep = fuelFlowRate * deltaTime;
+	r.updateMass(deltaTime);
+	EXPECT_EQ(fuelMass - fuelUsedThisTimeStep, r.fuelMass);
+}
 
 
 int main(int argc, char*argv[])

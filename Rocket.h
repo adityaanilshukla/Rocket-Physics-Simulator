@@ -20,9 +20,11 @@ class Rocket : public Physicalobject
 
 		//constructor
 		Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, float &dryMass, float &fuelMass ,float &thrust, float &dragCoefficient, float &crossSectionalArea, float &specificImpulse);
-
 		//destructor
 		virtual ~Rocket();
+
+		//methods
+		void updateMass(float &deltaTime);
 };
 
 #endif // ROCKET_H
