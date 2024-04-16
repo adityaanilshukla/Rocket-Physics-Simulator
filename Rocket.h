@@ -16,9 +16,10 @@ class Rocket : public Physicalobject
 		float crossSectionalArea;
 		float fuelMass;
 		float dryMass;
+		float specificImpulse;
 
 		//constructor
-		Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, float &dryMass, float &fuelMass ,float &thrust, float &dragCoefficient, float &crossSectionalArea);
+		Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, float &dryMass, float &fuelMass ,float &thrust, float &dragCoefficient, float &crossSectionalArea, float &specificImpulse);
 
 		//destructor
 		virtual ~Rocket();

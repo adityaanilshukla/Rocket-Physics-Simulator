@@ -85,9 +85,10 @@ TEST(Rocket, constructor)
 	float thrust = (25000*9.81f);
 	float dragCoefficient = 0.15f;
 	float crossSectionalArea = 15.0f;
+	float specificImpuse = 250;
 
 	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea);
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpuse);
 
 }
 
