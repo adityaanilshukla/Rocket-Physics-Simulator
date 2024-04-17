@@ -8,6 +8,7 @@ Rocket::Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, f
 	this->dragCoefficient = dragCoefficient;
 	this->crossSectionalArea = crossSectionalArea;
 	this->fuelMass = fuelMass;
+	this->dryMass = dryMass;
 	this->specificImpulse = specificImpuse;
 }
 

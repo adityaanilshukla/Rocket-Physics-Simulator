@@ -89,6 +89,13 @@ TEST(Rocket, constructor)
 
 	//constructor
 	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpuse);
+
+	EXPECT_EQ(dryMass, r.dryMass);
+	EXPECT_EQ(fuelMass, r.fuelMass);
+	EXPECT_EQ(thrust, r.thrust);
+	EXPECT_EQ(dragCoefficient, r.dragCoefficient);
+	EXPECT_EQ(crossSectionalArea, r.crossSectionalArea);
+	EXPECT_EQ(specificImpuse, r.specificImpulse);
 }
 
 TEST(Rocket, updateMass)
