@@ -1,5 +1,5 @@
-
 #include "Rocket.h"
+#include "Engine.h"
 
 //rocket constructor
 Rocket::Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, float &dryMass, float &fuelMass ,float &thrust, float &dragCoefficient, float &crossSectionalArea, float &specificImpuse) : Physicalobject(position, velocity, acceleration, dryMass)
@@ -10,9 +10,15 @@ Rocket::Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, f
 	this->fuelMass = fuelMass;
 	this->dryMass = dryMass;
 	this->specificImpulse = specificImpuse;
+
+	//create engine
+	this->rocketEngine = new Engine(thrust, specificImpuse);
 }
 
-Rocket::~Rocket(){}
+Rocket::~Rocket()
+{
+	delete this->rocketEngine;
+}
 
 bool Rocket::fuelNotDepleted()
 {

@@ -2,6 +2,7 @@
 #include "../Vector3D.h" 
 #include "../Physicalobject.h"
 #include "../Rocket.h"
+#include "../Engine.h"
 
 
 TEST(Vector3D, constructor)
@@ -144,6 +145,29 @@ TEST(Rocket, fuleDepleted)
 	r.updateMass(deltaTime);
 	EXPECT_EQ(fuelMass, r.fuelMass);
 }
+
+
+TEST(Rocket, createsEngine)
+{
+	//v2 rocket specifications real values
+	Vector3D position(0, 0, 0);
+	Vector3D velocity(0, 0, 0);
+	Vector3D acceleration(0, 0, 0);
+	float dryMass = 5000;
+	float fuelMass = (12000-dryMass);
+	float thrust = 25000*9.81;
+	float dragCoefficient = 0.15f;
+	float crossSectionalArea = 15.0f;
+	float specificImpuse = 250;
+
+	//constructor
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpuse);
+
+	//return values of the engine to determine if the engine was created correctly
+	EXPECT_EQ(thrust, r.rocketEngine->thrust);
+	EXPECT_EQ(specificImpuse, r.rocketEngine->specificImpulse);
+}
+
 
 
 

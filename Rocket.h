@@ -1,6 +1,7 @@
 #ifndef ROCKET_H
 #define ROCKET_H
 #include "Physicalobject.h"
+#include "Engine.h"
 
 // Inherits: PhysicalObject
 // Purpose: Represents the rocket with specific attributes and behaviors
@@ -19,6 +20,7 @@ class Rocket : public Physicalobject
 		float dryMass;
 		float specificImpulse;
 
+		Engine *rocketEngine;
 
 		//constructor
 		Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, float &dryMass, float &fuelMass ,float &thrust, float &dragCoefficient, float &crossSectionalArea, float &specificImpulse);
