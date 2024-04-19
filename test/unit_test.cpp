@@ -3,6 +3,7 @@
 #include "../Physicalobject.h"
 #include "../Rocket.h"
 #include "../Engine.h"
+#include <iostream>
 
 
 TEST(Vector3D, constructor)
@@ -86,17 +87,17 @@ TEST(Rocket, constructor)
 	float thrust = 25000*9.81;
 	float dragCoefficient = 0.15f;
 	float crossSectionalArea = 15.0f;
-	float specificImpuse = 250;
+	float specificImpulse = 250;
 
 	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpuse);
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
 
 	EXPECT_EQ(dryMass, r.dryMass);
 	EXPECT_EQ(fuelMass, r.fuelMass);
 	EXPECT_EQ(thrust, r.thrust);
 	EXPECT_EQ(dragCoefficient, r.dragCoefficient);
 	EXPECT_EQ(crossSectionalArea, r.crossSectionalArea);
-	EXPECT_EQ(specificImpuse, r.specificImpulse);
+	EXPECT_EQ(specificImpulse, r.specificImpulse);
 }
 
 TEST(Rocket, updateMass)
@@ -110,14 +111,14 @@ TEST(Rocket, updateMass)
 	float thrust = 25000*9.81;
 	float dragCoefficient = 0.15f;
 	float crossSectionalArea = 15.0f;
-	float specificImpuse = 250;
+	float specificImpulse = 250;
 	float deltaTime = 0.7; //seconds
 
 	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpuse);
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
 
 	//rocket fuel flow rate is thrust/specificImpulse. After updateMass is called the fuel mass should be reduced
-	float fuelFlowRate = thrust/specificImpuse; //per second
+	float fuelFlowRate = thrust/specificImpulse; //per second
 	float fuelUsedThisTimeStep = fuelFlowRate * deltaTime;
 	r.updateMass(deltaTime);
 	float extpectedFuelMass = fuelMass - fuelUsedThisTimeStep;
@@ -136,11 +137,11 @@ TEST(Rocket, fuleDepleted)
 	float thrust = 25000*9.81;
 	float dragCoefficient = 0.15f;
 	float crossSectionalArea = 15.0f;
-	float specificImpuse = 250;
+	float specificImpulse = 250;
 	float deltaTime = 0.5; //seconds
 
 	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpuse);
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
 
 	r.updateMass(deltaTime);
 	EXPECT_EQ(fuelMass, r.fuelMass);
@@ -158,24 +159,18 @@ TEST(Rocket, createsEngine)
 	float thrust = 25000*9.81;
 	float dragCoefficient = 0.15f;
 	float crossSectionalArea = 15.0f;
-	float specificImpuse = 250;
+	float specificImpulse = 250;
 
 	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpuse);
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
 
 	//return values of the engine to determine if the engine was created correctly
 	EXPECT_EQ(thrust, r.rocketEngine->thrust);
-	EXPECT_EQ(specificImpuse, r.rocketEngine->specificImpulse);
+	EXPECT_EQ(specificImpulse, r.rocketEngine->specificImpulse);
 }
-
-
-
 
 int main(int argc, char*argv[])
 {
  testing::InitGoogleTest(&argc, argv);
  return RUN_ALL_TESTS();
 }
-
-
-	

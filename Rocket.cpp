@@ -1,18 +1,19 @@
 #include "Rocket.h"
 #include "Engine.h"
+#include <iostream>
 
 //rocket constructor
-Rocket::Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, float &dryMass, float &fuelMass ,float &thrust, float &dragCoefficient, float &crossSectionalArea, float &specificImpuse) : Physicalobject(position, velocity, acceleration, dryMass)
-{
-	this->thrust = thrust;
-	this->dragCoefficient = dragCoefficient;
-	this->crossSectionalArea = crossSectionalArea;
-	this->fuelMass = fuelMass;
-	this->dryMass = dryMass;
-	this->specificImpulse = specificImpuse;
+Rocket::Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, 
+               float &dryMass, float &fuelMass, float &thrust, 
+               float &dragCoefficient, float &crossSectionalArea, float &specificImpulse)
 
-	//create engine
-	this->rocketEngine = new Engine(thrust, specificImpuse);
+    // Call the parent constructor
+    : Physicalobject(position, velocity, acceleration, dryMass),
+      thrust(thrust), dragCoefficient(dragCoefficient), crossSectionalArea(crossSectionalArea),
+      fuelMass(fuelMass), dryMass(dryMass), specificImpulse(specificImpulse) {
+
+    // Create engine after all values are properly assigned
+    this->rocketEngine = new Engine(this->thrust, this->specificImpulse);
 }
 
 Rocket::~Rocket()
