@@ -3,7 +3,6 @@
 #include "../Physicalobject.h"
 #include "../Rocket.h"
 #include "../Engine.h"
-#include <iostream>
 
 
 TEST(Vector3D, constructor)
@@ -92,12 +91,13 @@ TEST(Rocket, constructor)
 	//constructor
 	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
 
-	EXPECT_EQ(dryMass, r.getDryMass());
-	EXPECT_EQ(fuelMass, r.getFuelMass());
-	EXPECT_EQ(thrust, r.getThrust());
+
 	EXPECT_EQ(dragCoefficient, r.getDragCoefficient());
 	EXPECT_EQ(crossSectionalArea, r.getCrossSectionalArea());
-	EXPECT_EQ(specificImpulse, r.getSpecificImpulse());
+	EXPECT_EQ(fuelMass, r.getFuelMass());
+	EXPECT_EQ(dryMass, r.getDryMass());
+
+	//the variables thrust and specificImpulse are stored in the engine object which is created in the rocket constructor
 }
 
 TEST(Rocket, updateMass)
@@ -165,8 +165,9 @@ TEST(Rocket, createsEngine)
 	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
 
 	//return values of the engine to determine if the engine was created correctly
-	EXPECT_EQ(thrust, r.rocketEngine->thrust);
-	EXPECT_EQ(specificImpulse, r.rocketEngine->specificImpulse);
+	//these values are referenced from the engine object and are not stored in the rocket object
+	EXPECT_EQ(thrust, r.getThrust());
+	EXPECT_EQ(specificImpulse, r.getSpecificImpulse());
 }
 
 int main(int argc, char*argv[])

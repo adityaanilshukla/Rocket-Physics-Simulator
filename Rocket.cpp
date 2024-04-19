@@ -1,6 +1,5 @@
 #include "Rocket.h"
 #include "Engine.h"
-#include <iostream>
 
 //rocket constructor
 Rocket::Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration, 
@@ -9,12 +8,13 @@ Rocket::Rocket(Vector3D &position, Vector3D &velocity, Vector3D &acceleration,
 
     // Call the parent constructor
     : Physicalobject(position, velocity, acceleration, dryMass),
-      thrust(thrust), dragCoefficient(dragCoefficient), crossSectionalArea(crossSectionalArea),
-      fuelMass(fuelMass), dryMass(dryMass), specificImpulse(specificImpulse) {
+      dragCoefficient(dragCoefficient), crossSectionalArea(crossSectionalArea),
+      fuelMass(fuelMass), dryMass(dryMass){
+	
+    //create engine after all values are properly assigned
+    this->rocketEngine = new Engine(thrust, specificImpulse);
+}	
 
-    // Create engine after all values are properly assigned
-    this->rocketEngine = new Engine(this->thrust, this->specificImpulse);
-}
 
 Rocket::~Rocket()
 {
@@ -36,7 +36,10 @@ void Rocket::updateMass(float &deltaTime)
 {
 	if(fuelNotDepleted()){
 	//rocket fuel flow rate is thrust/specificImpulse. After updateMass is called the fuel mass should be reduced
-	float fuelFlowRate = (this->thrust/this->specificImpulse);
+	// float fuelFlowRate = (this->thrust/this->specificImpulse);
+
+	float fuelFlowRate = this->rocketEngine->getThrust()/this->rocketEngine->getSpecificImpulse();
+
 	float fuelUsedThisTimeStep = fuelFlowRate * deltaTime;
 	this->fuelMass -= fuelUsedThisTimeStep;
 	}
@@ -45,7 +48,7 @@ void Rocket::updateMass(float &deltaTime)
 //getters
 float Rocket::getThrust()
 {
-	return this->thrust;
+	return this->rocketEngine->getThrust();
 }
 
 float Rocket::getDragCoefficient()
@@ -70,7 +73,7 @@ float Rocket::getDryMass()
 
 float Rocket::getSpecificImpulse()
 {
-	return this->specificImpulse;
+	return this->rocketEngine->getSpecificImpulse();
 }
 
 

@@ -13,12 +13,10 @@ class Rocket : public Physicalobject
 {
 	private:
 		//attributes
-		float thrust;
 		float dragCoefficient;
 		float crossSectionalArea;
 		float fuelMass;
 		float dryMass;
-		float specificImpulse;
 
 	public:
 

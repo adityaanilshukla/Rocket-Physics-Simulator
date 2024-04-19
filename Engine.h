@@ -12,17 +12,21 @@
 
 class Engine
 {
-public:
 
+private:
 	float neutralAngle = 0; // Declare and initialize before gimbalAngles
 	float thrust;
 	float specificImpulse;
 	Vector3D gimbalAngles;
 
+public:
 
-	Engine(float thrust, float specificImpulse);
+	Engine(float &thrust, float &specificImpulse);
 	virtual ~Engine();
 
+	//getters
+	float getThrust();
+	float getSpecificImpulse();
 };
 
 #endif // ENGINE_H
