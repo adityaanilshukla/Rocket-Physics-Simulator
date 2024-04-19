@@ -9,7 +9,7 @@
 
 class Physicalobject {
 
-	public:
+	private:
 		// Variables
 		Vector3D position_;
 		Vector3D velocity_;
@@ -17,6 +17,7 @@ class Physicalobject {
 		float mass_;
 
 
+	public:
 		//constructor
 		Physicalobject(const Vector3D& position, const Vector3D& velocity ,const Vector3D& acceleration, float& mass);
 
