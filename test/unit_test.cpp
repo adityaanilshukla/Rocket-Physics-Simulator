@@ -92,12 +92,12 @@ TEST(Rocket, constructor)
 	//constructor
 	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
 
-	EXPECT_EQ(dryMass, r.dryMass);
-	EXPECT_EQ(fuelMass, r.fuelMass);
-	EXPECT_EQ(thrust, r.thrust);
-	EXPECT_EQ(dragCoefficient, r.dragCoefficient);
-	EXPECT_EQ(crossSectionalArea, r.crossSectionalArea);
-	EXPECT_EQ(specificImpulse, r.specificImpulse);
+	EXPECT_EQ(dryMass, r.getDryMass());
+	EXPECT_EQ(fuelMass, r.getFuelMass());
+	EXPECT_EQ(thrust, r.getThrust());
+	EXPECT_EQ(dragCoefficient, r.getDragCoefficient());
+	EXPECT_EQ(crossSectionalArea, r.getCrossSectionalArea());
+	EXPECT_EQ(specificImpulse, r.getSpecificImpulse());
 }
 
 TEST(Rocket, updateMass)
@@ -122,7 +122,7 @@ TEST(Rocket, updateMass)
 	float fuelUsedThisTimeStep = fuelFlowRate * deltaTime;
 	r.updateMass(deltaTime);
 	float extpectedFuelMass = fuelMass - fuelUsedThisTimeStep;
-	EXPECT_EQ(extpectedFuelMass, r.fuelMass);
+	EXPECT_EQ(extpectedFuelMass, r.getFuelMass());
 }
 
 //rocket should not be able to update mass once fuel is depleted
@@ -144,7 +144,7 @@ TEST(Rocket, fuleDepleted)
 	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
 
 	r.updateMass(deltaTime);
-	EXPECT_EQ(fuelMass, r.fuelMass);
+	EXPECT_EQ(fuelMass, r.getFuelMass());
 }
 
 
@@ -174,3 +174,4 @@ int main(int argc, char*argv[])
  testing::InitGoogleTest(&argc, argv);
  return RUN_ALL_TESTS();
 }
+

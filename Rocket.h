@@ -10,8 +10,8 @@
 // updateState(float deltaTime): Override to include engine thrust calculations and fuel consumption
 
 class Rocket : public Physicalobject
-{	
-	public:
+{
+	private:
 		//attributes
 		float thrust;
 		float dragCoefficient;
@@ -19,6 +19,8 @@ class Rocket : public Physicalobject
 		float fuelMass;
 		float dryMass;
 		float specificImpulse;
+
+	public:
 
 		Engine *rocketEngine;
 
@@ -30,7 +32,15 @@ class Rocket : public Physicalobject
 
 		//methods
 		void updateMass(float &deltaTime);
-		bool fuelNotDepleted(); 
+		bool fuelNotDepleted();
+
+		//getters
+		float getThrust();
+		float getDragCoefficient();
+		float getCrossSectionalArea();
+		float getFuelMass();
+		float getDryMass();
+		float getSpecificImpulse();
 };
 
 #endif // ROCKET_H

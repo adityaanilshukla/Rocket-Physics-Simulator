@@ -41,3 +41,36 @@ void Rocket::updateMass(float &deltaTime)
 	this->fuelMass -= fuelUsedThisTimeStep;
 	}
 }
+
+//getters
+float Rocket::getThrust()
+{
+	return this->thrust;
+}
+
+float Rocket::getDragCoefficient()
+{
+	return this->dragCoefficient;
+}
+
+float Rocket::getCrossSectionalArea()
+{
+	return this->crossSectionalArea;
+}
+
+float Rocket::getFuelMass()
+{
+	return this->fuelMass;
+}
+
+float Rocket::getDryMass()
+{
+	return this->dryMass;
+}
+
+float Rocket::getSpecificImpulse()
+{
+	return this->specificImpulse;
+}
+
+
