@@ -4,27 +4,30 @@
 #define VECTOR3D_H
 
 class Vector3D {
-public:
 
-    // Variables
-    float x, y, z;
+	private:
 
-    // Constructors
-    Vector3D(float x, float y, float z);
-    // Destructor
-    ~Vector3D(); 
-    
-    //getters
-    float getX();
-    float getY();
-    float getZ();
+	    // Variables
+	    float x, y, z;
 
-    //vector operations
-    Vector3D operator+(const Vector3D& v);
-    Vector3D operator-(const Vector3D& v);
+	public:
 
-    //scalar operations
-    Vector3D operator*(float scalar);
+	    // Constructors
+	    Vector3D(float x, float y, float z);
+	    // Destructor
+	    ~Vector3D(); 
+	    
+	    //getters
+	    float getX();
+	    float getY();
+	    float getZ();
+
+	    //vector operations
+	    Vector3D operator+(const Vector3D& v);
+	    Vector3D operator-(const Vector3D& v);
+
+	    //scalar operations
+	    Vector3D operator*(float scalar);
 
 
 

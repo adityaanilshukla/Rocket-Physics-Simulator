@@ -8,9 +8,9 @@ Vector3D::Vector3D(float x, float y, float z) : x(x), y(y), z(z) {}
 Vector3D::~Vector3D() {}
 
 // Getters
-float Vector3D::getX() { return x; }
-float Vector3D::getY() { return y; }
-float Vector3D::getZ() { return z; }
+float Vector3D::getX() { return this->x; }
+float Vector3D::getY() { return this->y; }
+float Vector3D::getZ() { return this->z; }
 
 //Vector operations
 Vector3D Vector3D::operator+(const Vector3D& v) {
