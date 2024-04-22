@@ -201,6 +201,71 @@ TEST(Rocket, setEngineAngle)
 	EXPECT_EQ(changedEngineAngle.getZ(), currentGimbalAngles.getZ()); //should be 0 as rocket engines only have x and y axis control
 }
 
+TEST(Rocket, setgimbalAngleBeyondPositiveLimit)
+{
+	//v2 rocket specifications real values
+	Vector3D position(0, 0, 0);
+	Vector3D velocity(0, 0, 0);
+	Vector3D acceleration(0, 0, 0);
+	float dryMass = 5000;
+	float fuelMass = (12000-dryMass);
+	float thrust = 25000*9.81;
+	float dragCoefficient = 0.15f;
+	float crossSectionalArea = 15.0f;
+	float specificImpulse = 250;
+
+	//constructor
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass , thrust, dragCoefficient, crossSectionalArea, specificImpulse);
+
+	float xAngle = 25;
+	float yAngle = 25;
+	float zAngle = 0;
+
+	float xLimit = 5;
+	float yLimit = 5;
+
+	Vector3D changedEngineAngle(xAngle, yAngle, zAngle); //rocket engines only have x and y axis control
+	
+	r.setGimbalAngles(xAngle, yAngle, zAngle);
+	Vector3D currentGimbalAngles = r.getGimbalAngles();
+
+	EXPECT_EQ(xLimit, currentGimbalAngles.getX());
+	EXPECT_EQ(yLimit, currentGimbalAngles.getY());
+	EXPECT_EQ(changedEngineAngle.getZ(), currentGimbalAngles.getZ()); //should be 0 as rocket engines only have x and y axis control
+}
+
+TEST(Rocket, setGimalAngleBeyondNegativeLimit)
+{
+	//v2 rocket specifications real values
+	Vector3D position(0, 0, 0);
+	Vector3D velocity(0, 0, 0);
+	Vector3D acceleration(0, 0, 0);
+	float dryMass = 5000;
+	float fuelMass = (12000-dryMass);
+	float thrust = 25000*9.81;
+	float dragCoefficient = 0.15f;
+	float crossSectionalArea = 15.0f;
+	float specificImpulse = 250;
+
+	//constructor
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass , thrust, dragCoefficient, crossSectionalArea, specificImpulse);
+
+	float xAngle = -25;
+	float yAngle = -25;
+	float zAngle = 0;
+
+	float xLimit = -5;
+	float yLimit = -5;
+
+	Vector3D changedEngineAngle(xAngle, yAngle, zAngle); //rocket engines only have x and y axis control
+
+	r.setGimbalAngles(xAngle, yAngle, zAngle);
+	Vector3D currentGimbalAngles = r.getGimbalAngles();
+
+	EXPECT_EQ(xLimit, currentGimbalAngles.getX());
+	EXPECT_EQ(yLimit, currentGimbalAngles.getY());
+	EXPECT_EQ(changedEngineAngle.getZ(), currentGimbalAngles.getZ()); //should be 0 as rocket engines only have x and y axis control
+}
 
 int main(int argc, char*argv[])
 {
