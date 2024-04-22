@@ -75,6 +75,28 @@ TEST(Physicalobject, updatePosition)
 	EXPECT_EQ(expectedPosition.getZ(), p.getPosition().getZ());
 }
 
+//a method to create a generic Rocket object for testing purposes
+//this method is used to create a rocket object with the same specifications as the v2 rocket
+//it allows us to not repeat code in the tests as the Rocket constructor is used in multiple tests
+
+Rocket createRocket()
+{
+	//v2 rocket specifications real values
+	Vector3D position(0, 0, 0);
+	Vector3D velocity(0, 0, 0);
+	Vector3D acceleration(0, 0, 0);
+	float dryMass = 5000;
+	float fuelMass = (12000-dryMass);
+	float thrust = 25000*9.81;
+	float dragCoefficient = 0.15f;
+	float crossSectionalArea = 15.0f;
+	float specificImpulse = 250;
+
+	//constructor
+	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
+	return r;
+}
+
 TEST(Rocket, constructor)
 {
 	//v2 rocket specifications real values
@@ -102,20 +124,12 @@ TEST(Rocket, constructor)
 
 TEST(Rocket, updateMass)
 {
-	//v2 rocket specifications real values
-	Vector3D position(0, 0, 0);
-	Vector3D velocity(0, 0, 0);
-	Vector3D acceleration(0, 0, 0);
-	float dryMass = 5000;
-	float fuelMass = (12000-dryMass);
-	float thrust = 25000*9.81;
-	float dragCoefficient = 0.15f;
-	float crossSectionalArea = 15.0f;
-	float specificImpulse = 250;
+	Rocket r = createRocket();
 	float deltaTime = 0.7; //seconds
 
-	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
+	float thrust = 25000*9.81;
+	float specificImpulse = 250;
+	float fuelMass = 7000;
 
 	//rocket fuel flow rate is thrust/specificImpulse. After updateMass is called the fuel mass should be reduced
 	float fuelFlowRate = thrust/specificImpulse; //per second
@@ -150,19 +164,10 @@ TEST(Rocket, fuleDepleted)
 
 TEST(Rocket, createsEngine)
 {
-	//v2 rocket specifications real values
-	Vector3D position(0, 0, 0);
-	Vector3D velocity(0, 0, 0);
-	Vector3D acceleration(0, 0, 0);
-	float dryMass = 5000;
-	float fuelMass = (12000-dryMass);
-	float thrust = 25000*9.81;
-	float dragCoefficient = 0.15f;
-	float crossSectionalArea = 15.0f;
-	float specificImpulse = 250;
+	Rocket r = createRocket();
 
-	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, fuelMass ,thrust, dragCoefficient, crossSectionalArea, specificImpulse);
+	float thrust = 25000*9.81;
+	float specificImpulse = 250;
 
 	//return values of the engine to determine if the engine was created correctly
 	//these values are referenced from the engine object and are not stored in the rocket object
@@ -172,19 +177,7 @@ TEST(Rocket, createsEngine)
 
 TEST(Rocket, setEngineAngle)
 {
-	//v2 rocket specifications real values
-	Vector3D position(0, 0, 0);
-	Vector3D velocity(0, 0, 0);
-	Vector3D acceleration(0, 0, 0);
-	float dryMass = 5000;
-	float fuelMass = (12000-dryMass);
-	float thrust = 25000*9.81;
-	float dragCoefficient = 0.15f;
-	float crossSectionalArea = 15.0f;
-	float specificImpulse = 250;
-
-	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, fuelMass , thrust, dragCoefficient, crossSectionalArea, specificImpulse);
+	Rocket r = createRocket();
 
 	float xAngle = 2;
 	float yAngle = 3;
@@ -203,19 +196,7 @@ TEST(Rocket, setEngineAngle)
 
 TEST(Rocket, setgimbalAngleBeyondPositiveLimit)
 {
-	//v2 rocket specifications real values
-	Vector3D position(0, 0, 0);
-	Vector3D velocity(0, 0, 0);
-	Vector3D acceleration(0, 0, 0);
-	float dryMass = 5000;
-	float fuelMass = (12000-dryMass);
-	float thrust = 25000*9.81;
-	float dragCoefficient = 0.15f;
-	float crossSectionalArea = 15.0f;
-	float specificImpulse = 250;
-
-	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, fuelMass , thrust, dragCoefficient, crossSectionalArea, specificImpulse);
+	Rocket r = createRocket();
 
 	float xAngle = 25;
 	float yAngle = 25;
@@ -236,19 +217,7 @@ TEST(Rocket, setgimbalAngleBeyondPositiveLimit)
 
 TEST(Rocket, setGimalAngleBeyondNegativeLimit)
 {
-	//v2 rocket specifications real values
-	Vector3D position(0, 0, 0);
-	Vector3D velocity(0, 0, 0);
-	Vector3D acceleration(0, 0, 0);
-	float dryMass = 5000;
-	float fuelMass = (12000-dryMass);
-	float thrust = 25000*9.81;
-	float dragCoefficient = 0.15f;
-	float crossSectionalArea = 15.0f;
-	float specificImpulse = 250;
-
-	//constructor
-	Rocket r (position, velocity, acceleration, dryMass, fuelMass , thrust, dragCoefficient, crossSectionalArea, specificImpulse);
+	Rocket r = createRocket();
 
 	float xAngle = -25;
 	float yAngle = -25;
