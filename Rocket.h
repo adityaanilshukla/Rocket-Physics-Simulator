@@ -40,6 +40,7 @@ class Rocket : public Physicalobject
 		float getDryMass();
 		float getSpecificImpulse();
 		Vector3D getGimbalAngles();
+		float getMaxGimbalAngle();
 
 		//setters
 		void setGimbalAngles(float &x, float &y, float &z);

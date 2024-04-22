@@ -221,8 +221,8 @@ TEST(Rocket, setgimbalAngleBeyondPositiveLimit)
 	float yAngle = 25;
 	float zAngle = 0;
 
-	float xLimit = 5;
-	float yLimit = 5;
+	float xLimit = r.getMaxGimbalAngle();
+	float yLimit = r.getMaxGimbalAngle();
 
 	Vector3D changedEngineAngle(xAngle, yAngle, zAngle); //rocket engines only have x and y axis control
 	
@@ -253,9 +253,9 @@ TEST(Rocket, setGimalAngleBeyondNegativeLimit)
 	float xAngle = -25;
 	float yAngle = -25;
 	float zAngle = 0;
-
-	float xLimit = -5;
-	float yLimit = -5;
+	
+	float xLimit = -1 * r.rocketEngine->getMaxGimbalAngle();
+	float yLimit = -1 * r.rocketEngine->getMaxGimbalAngle();
 
 	Vector3D changedEngineAngle(xAngle, yAngle, zAngle); //rocket engines only have x and y axis control
 

@@ -86,7 +86,10 @@ void Rocket::setGimbalAngles(float &x, float &y, float &z)
 	this->rocketEngine->setGimbalAngles(x, y, z);
 }
 
-
+float Rocket::getMaxGimbalAngle()
+{
+	return this->rocketEngine->getMaxGimbalAngle();
+}
 
 
 

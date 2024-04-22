@@ -59,5 +59,8 @@ Vector3D Engine::getGimbalAngles()
 	return this->gimbalAngles;
 }
 
-
+float Engine::getMaxGimbalAngle()
+{
+	return maxGimbalAngle;
+}
 

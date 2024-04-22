@@ -29,6 +29,7 @@ public:
 	float getThrust();
 	float getSpecificImpulse();
 	float calculateThrustVector();
+	float getMaxGimbalAngle();
 
 	//setters
 	void setGimbalAngles(float &x, float &y, float &z);
