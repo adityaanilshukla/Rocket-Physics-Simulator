@@ -18,6 +18,7 @@ private:
 	float thrust;
 	float specificImpulse;
 	Vector3D gimbalAngles;
+	float maxGimbalAngle = 5; //degrees
 
 public:
 
@@ -27,6 +28,11 @@ public:
 	//getters
 	float getThrust();
 	float getSpecificImpulse();
+	float calculateThrustVector();
+
+	//setters
+	void setGimbalAngles(float &x, float &y, float &z);
+	Vector3D getGimbalAngles();
 };
 
 #endif // ENGINE_H

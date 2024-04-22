@@ -39,6 +39,11 @@ class Rocket : public Physicalobject
 		float getFuelMass();
 		float getDryMass();
 		float getSpecificImpulse();
+		Vector3D getGimbalAngles();
+
+		//setters
+		void setGimbalAngles(float &x, float &y, float &z);
+
 };
 
 #endif // ROCKET_H

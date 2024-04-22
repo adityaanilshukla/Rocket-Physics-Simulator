@@ -76,4 +76,18 @@ float Rocket::getSpecificImpulse()
 	return this->rocketEngine->getSpecificImpulse();
 }
 
+Vector3D Rocket::getGimbalAngles()
+{
+	return this->rocketEngine->getGimbalAngles();
+}
+
+void Rocket::setGimbalAngles(float &x, float &y, float &z)
+{
+	this->rocketEngine->setGimbalAngles(x, y, z);
+}
+
+
+
+
+
 
